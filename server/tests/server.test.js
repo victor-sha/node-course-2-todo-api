@@ -253,8 +253,8 @@ describe('POST /users', () => {
             .send({email, password})
             .expect(200)
             .expect((res) => {
-                expect(res.headers['x-auth']).toBeDefined();
-                expect(res.body._id).toBeDefined();
+                expect(res.headers['x-auth']).toBeTruthy();
+                expect(res.body._id).toBeTruthy();
                 expect(res.body.email).toBe(email);
             })
             .end((err) => {
@@ -304,8 +304,8 @@ describe('POST /users/login', () => {
             .expect(200)
             .expect((res) => {
                 expect(res.body.email).toBe(users[1].email);
-                expect(res.body._id).toBeDefined();
-                expect(res.headers['x-auth']).toBeDefined();
+                expect(res.body._id).toBeTruthy();
+                expect(res.headers['x-auth']).toBeTruthy();
             })
             .end((err, res) => {
                 if(err){
@@ -329,7 +329,7 @@ describe('POST /users/login', () => {
             })
             .expect(400)
             .expect((res) => {
-                expect(res.headers['x-auth']).toBeUndefined();
+                expect(res.headers['x-auth']).toBeFalsy();
             })
             .end((err, res) => {
                 if(err){
