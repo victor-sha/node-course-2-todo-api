@@ -1,2 +1,3 @@
 node_modules/
 .eslintrc.yml
+server/config/config.json
